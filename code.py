@@ -8,7 +8,7 @@ import usb_cdc
 import usb_hid
 
 from kmk.kmk_keyboard import KMKKeyboard
-from kmk.keys import KC, make_key
+from kmk.keys import KC
 from kmk.scanners import DiodeOrientation
 from kmk.modules.macros import Macros
 from kmk.modules.layers import Layers
@@ -57,7 +57,7 @@ DISC_DEAF = KC.MACRO(
     Release(KC.RCTL),
     Release(KC.RSHIFT)
 )
-
+#layer change
 LAYER_CHANGE1 = KC.DF(1)
 LAYER_CHANGE0 = KC.DF(0)
 
@@ -68,16 +68,6 @@ led2 = digitalio.DigitalInOut(board.GP28)
 led2.direction = digitalio.Direction.OUTPUT
 
 led_tog = True
-# 
-# def toggle_led(key, key_state, pressed, repeat):
-#     global led_tog
-#     if pressed:
-#         led_tog = not led_tog
-#         print("KEY IS PRESSED")
-
-# !!modify
-# LED_TOG = make_key(names=("LED_TOG"), on_press=toggle_led,)
-
 def update_leds():
     if keyboard.active_layers[0] == 0 and led_tog is True:
         led1.value = True
@@ -89,7 +79,7 @@ def update_leds():
 keyboard.before_matrix_scan = update_leds
 
 keyboard.keymap = [
-    #BASE LAYER
+    #LAYER 0
     [COPY_KEY, PASTE_KEY2, DISC_MUTE, DISC_DEAF, KC.MUTE, KC.TRNS,
      KC.TRNS, KC.TRNS, KC.TRNS, KC.TRNS, KC.TRNS, LAYER_CHANGE1],
     
