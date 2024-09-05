@@ -1,4 +1,4 @@
-print("Pico Initiated...")
+print("Macro-Pico Initiated...")
 
 import board
 import supervisor
